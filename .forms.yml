@@ -15,16 +15,11 @@ default:
         type: map
         default:
           SSH_JUMP_URL: user1@Bastion1
-          SSH_PRIVATE_KEYS:
-            - ((ssh_bastion.ssh_key))
+          SSH_PRIVATE_KEYS: ((ssh_bastion.ssh_key))
           ANSIBLE_VAULT_PASSWORD: ((raw_ansible_password))
-          # ANSIBLE_PLAYBOOK_PATH should be "ansible-playbook/" + (git_ansible_path)
           ANSIBLE_PLAYBOOK_PATH: ansible-playbook/
           ANSIBLE_PLAYBOOK_NAME: playbook.yml
-          EXTRA_ANSIBLE_VARS:
-            customer: ($ organization_canonical $)
-            project: ($ project $)
-            env: ($ environment $)
+          EXTRA_ANSIBLE_VARS: something
     Repos:
       - name: "Code git URL"
         description: "URL to the Git repository containing terraform source code."
